@@ -1,7 +1,7 @@
 file(GLOB SOURCES ./*.cpp)
 file(GLOB HEADERS ./*.h)
 
-if(EMSCRIPTEN)
+if(EMSCRIPTEN OR WASI)
   add_library(pmp STATIC ${SOURCES} ${HEADERS})
 else()
   add_library(pmp ${SOURCES} ${HEADERS})
@@ -19,7 +19,7 @@ if(WITH_CLANG_TIDY)
   set_target_properties(pmp PROPERTIES CXX_CLANG_TIDY "${CLANG_TIDY_COMMAND}")
 endif()
 
-if(NOT EMSCRIPTEN AND PMP_INSTALL)
+if(NOT EMSCRIPTEN AND NOT WASI AND PMP_INSTALL)
 
   target_include_directories(
     pmp
