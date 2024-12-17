@@ -80,7 +80,7 @@ void read_stl(SurfaceMesh& mesh, const std::filesystem::path& file)
         // normal, x,y,z, attribute byte count
         auto predicted = (4 * 12 + 2) * n_triangles;
 
-        return size == predicted;
+        return static_cast<uint32_t>(size) == predicted;
     };
 
     // parse binary STL
