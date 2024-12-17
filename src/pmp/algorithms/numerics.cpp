@@ -56,7 +56,7 @@ DenseMatrix cholesky_solve(
     // update rhs with constraints
     std::vector<Triplet> triplets;
     triplets.reserve(A.nonZeros());
-    for (unsigned int k = 0; k < A.outerSize(); k++)
+    for (Eigen::Index k = 0; k < A.outerSize(); k++)
     {
         for (SparseMatrix::InnerIterator iter(A, k); iter; ++iter)
         {

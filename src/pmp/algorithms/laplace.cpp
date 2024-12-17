@@ -463,7 +463,7 @@ void laplace_matrix(const SurfaceMesh& mesh, SparseMatrix& L, bool clamp)
     // clamp negative off-diagonal entries to zero
     if (clamp)
     {
-        for (unsigned int k = 0; k < L.outerSize(); k++)
+        for (Eigen::Index k = 0; k < L.outerSize(); k++)
         {
             double diag_offset(0.0);
 
